@@ -33,7 +33,7 @@ public class Payment {
     Staff staff;
 
     @ToString.Exclude
-    @OneToOne(mappedBy = "payment", fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "rental_id")
     Rental rental;
 

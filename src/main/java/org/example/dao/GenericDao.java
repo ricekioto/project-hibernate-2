@@ -25,14 +25,14 @@ public abstract class GenericDao<T> {
     }
 
     public List<T> getItems(int offset, int limit) {
-        Query<T> query = getCurrentSession().createQuery("from" + clazz.getSimpleName(), clazz);
+        Query<T> query = getCurrentSession().createQuery("from " + clazz.getName(), clazz);
         query.setFirstResult(offset);
         query.setMaxResults(limit);
         return query.list();
     }
 
     public List<T> findAll() {
-        return getCurrentSession().createQuery("from" + clazz.getSimpleName(), clazz).getResultList();
+        return getCurrentSession().createQuery("from" + clazz.getName(), clazz).getResultList();
     }
 
     public T save(final T entity) {

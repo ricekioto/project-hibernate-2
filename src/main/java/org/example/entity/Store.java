@@ -24,8 +24,8 @@ public class Store {
     Byte id;
 
     @ToString.Exclude
-    @OneToOne(mappedBy = "store")
-    @JoinColumn(name = "manager_stuff_id")
+    @OneToOne()
+    @JoinColumn(name = "manager_staff_id")
     Staff staff;
 
     @ToString.Exclude

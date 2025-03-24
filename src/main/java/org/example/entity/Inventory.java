@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(schema = "hibernate_project2", name = "film")
+@Table(schema = "hibernate_project2", name = "inventory")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Inventory {
     @Id
@@ -36,6 +36,6 @@ public class Inventory {
     LocalDateTime lastUpdate;
 
     @ToString.Exclude
-    @OneToMany(mappedBy = "staff",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "inventory",fetch = FetchType.LAZY)
     List<Rental> rentals;
 }

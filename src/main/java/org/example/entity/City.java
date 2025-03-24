@@ -16,7 +16,7 @@ import static lombok.AccessLevel.PRIVATE;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(schema = "hibernate_project2", name = "store")
+@Table(schema = "hibernate_project2", name = "city")
 @FieldDefaults(level = PRIVATE)
 public class City {
     @Id

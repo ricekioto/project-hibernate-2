@@ -25,14 +25,14 @@ public class Film {
     @Column(name = "film_id")
     Short id;
 
-    @Column(nullable = false, length = 128)
+    @Column(name = "title", length = 128)
     String title;
 
-    @Column(columnDefinition = "text")
+    @Column(name = "description", columnDefinition = "text")
     @Type(type = "text")
     String description;
 
-    @Column(name = "release_year")
+    @Column(name = "release_year", columnDefinition = "year")
     Year year;
 
     @ToString.Exclude
@@ -46,14 +46,18 @@ public class Film {
     Language originalLanguageId;
 
     @Column(name = "rental_duration")
-    BigDecimal rentalDuration;
+    Byte rentalDuration;
 
+    @Column(name = "rental_rate")
+    BigDecimal rentalRate;
+
+    @Column(name = "length")
     Short length;
 
     @Column(name = "replacement_cost")
     BigDecimal replacementCost;
 
-    @Column(columnDefinition = "enum('G', 'PG', 'PG-13', 'R', 'NC-17')")
+    @Column(name = "rating", columnDefinition = "enum('G', 'PG', 'PG-13', 'R', 'NC-17')")
     Rating rating;
 
     @Column(name = "special_features", columnDefinition = "set('Trailers', 'Commentaries', 'Deleted Scenes', 'Behind the Scenes')")
@@ -84,4 +88,5 @@ public class Film {
     @ToString.Exclude
     @OneToMany(mappedBy = "film")
     List<Inventory> inventories;
+
 }

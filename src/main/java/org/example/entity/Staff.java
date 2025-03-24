@@ -44,7 +44,7 @@ public class Staff {
     String email;
 
     @ToString.Exclude
-    @OneToOne(mappedBy = "staff")
+    @OneToOne()
     @JoinColumn(name = "store_id")
     Store store;
 

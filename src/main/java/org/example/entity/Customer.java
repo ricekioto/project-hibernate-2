@@ -56,6 +56,6 @@ public class Customer {
     List<Rental> rentals;
 
     @ToString.Exclude
-    @OneToMany(mappedBy = "costumer", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
     List<Payment> payments;
 }
