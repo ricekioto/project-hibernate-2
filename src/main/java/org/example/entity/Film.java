@@ -9,10 +9,16 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.Year;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
-@Data
+import static java.util.Objects.isNull;
+
+@Getter
+@Setter
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -33,15 +39,15 @@ public class Film {
     String description;
 
     @Column(name = "release_year", columnDefinition = "year")
-    Year year;
+    Integer year;
 
     @ToString.Exclude
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "language_id")
     Language languageId;
 
     @ToString.Exclude
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "original_language_id")
     Language originalLanguageId;
 
@@ -57,9 +63,12 @@ public class Film {
     @Column(name = "replacement_cost")
     BigDecimal replacementCost;
 
+    @ToString.Exclude
+    @Convert(converter = RentingConventer.class)
     @Column(name = "rating", columnDefinition = "enum('G', 'PG', 'PG-13', 'R', 'NC-17')")
     Rating rating;
 
+    @ToString.Exclude
     @Column(name = "special_features", columnDefinition = "set('Trailers', 'Commentaries', 'Deleted Scenes', 'Behind the Scenes')")
     String specialFeatures;
 
@@ -89,4 +98,29 @@ public class Film {
     @OneToMany(mappedBy = "film")
     List<Inventory> inventories;
 
+    public Set<Feature> getSpecialFeatures() {
+        if (isNull(specialFeatures) || specialFeatures.isEmpty()) {
+            return null;
+        }
+
+        Set<Feature> result = new HashSet<>();
+        String[] features = specialFeatures.split(",");
+        for (String feature : features) {
+            result.add(Feature.getFeatureByValue(feature));
+        }
+        result.remove(null);
+        return result;
+    }
+
+    public void setSpecialFeatures(Set<Feature> features) {
+        if (isNull(features)) {
+            features = null;
+        } else {
+            features.stream()
+                    .map(Feature::getValue)
+                    .collect(Collectors.joining(","));
+
+
+        }
+    }
 }

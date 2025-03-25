@@ -9,8 +9,9 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Data
-@Builder
+@Getter
+@Setter
+@ToString@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -34,7 +35,7 @@ public class Rental {
     @JoinColumn(name = "customer_id")
     Customer customer;
 
-    @Column(name = "return_date")
+    @Column(name = "return_date", columnDefinition = "datetime")
     LocalDateTime returnDate;
 
     @ToString.Exclude

@@ -9,8 +9,9 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Data
-@Builder
+@Getter
+@Setter
+@ToString@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity

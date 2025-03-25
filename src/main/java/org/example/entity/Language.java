@@ -7,9 +7,11 @@ import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
-@Data
-@NoArgsConstructor
+@Getter
+@Setter
+@ToString@NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity
@@ -27,4 +29,11 @@ public class Language {
     @Column(name = "last_update")
     @UpdateTimestamp
     LocalDateTime lastUpdate;
+
+    @OneToMany(mappedBy = "languageId")
+    List<Film> filmsLanguageId;
+
+    @OneToMany(mappedBy = "originalLanguageId")
+    List<Film> filmsOriginalLanguageId;
+
 }

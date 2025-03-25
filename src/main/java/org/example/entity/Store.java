@@ -10,8 +10,9 @@ import java.util.List;
 
 import static lombok.AccessLevel.*;
 
-@Data
-@NoArgsConstructor
+@Getter
+@Setter
+@ToString@NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity

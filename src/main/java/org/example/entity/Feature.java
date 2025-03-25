@@ -15,7 +15,11 @@ public enum Feature {
         this.value = value;
     }
 
-    public static String getFeatureByValue(String value) {
+    public String getValue() {
+        return value;
+    }
+
+    public static Feature getFeatureByValue(String value) {
         if (isNull(null) || value.isEmpty()) {
             return null;
         }
@@ -23,7 +27,7 @@ public enum Feature {
         Feature[] features = Feature.values();
         for (Feature feature : features) {
             if (feature.value.equals(value)) {
-                return feature.value;
+                return feature;
             }
         }
         return null;

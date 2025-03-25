@@ -11,8 +11,9 @@ import java.util.List;
 
 import static lombok.AccessLevel.PRIVATE;
 
-@Data
-@NoArgsConstructor
+@Getter
+@Setter
+@ToString@NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity
