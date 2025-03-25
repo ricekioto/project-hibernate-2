@@ -54,7 +54,7 @@ public class Main {
 //        Customer customer = main.createCustomer();
 //        main.customerReturnInbentoryToStore();
 //        main.customerRentInventory();
-//        main.shootingNewMovie();
+        main.shootingNewMovie();
     }
 
     private void shootingNewMovie() {
@@ -77,8 +77,17 @@ public class Main {
                     .specialFeatures(Feature.BEHIND_THE_SCENES.getValue())
                     .actors(new HashSet<>(actors))
                     .categories(new HashSet<>(categories))
+                    .description("A Epic Drama of a Feminist And a Mad Scientist who must Battle a Teacher in The Canadian Rockies")
                     .build();
             filmDAO.save(film);
+
+            FilmText filmText = FilmText.builder()
+                    .id(film.getId())
+                    .film(film)
+                    .title("EIGHTY NINE")
+                    .description("A Epic Drama of a Feminist And a Mad Scientist who must Battle a Teacher in The Canadian Rockies")
+                    .build();
+            filmTextDAO.save(filmText);
             session.getTransaction().commit();
         }
     }
