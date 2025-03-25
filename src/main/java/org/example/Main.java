@@ -54,7 +54,7 @@ public class Main {
 //        Customer customer = main.createCustomer();
 //        main.customerReturnInbentoryToStore();
 //        main.customerRentInventory();
-        main.shootingNewMovie();
+//        main.shootingNewMovie();
     }
 
     private void shootingNewMovie() {
